@@ -23,6 +23,8 @@ jobs:
         run: npm install -g newman newman-reporter-htmlextra
 
       - name: Run Postman Collection
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
         run: |
           newman run Go_rest.postman_collection.json \
             -r cli,htmlextra \
