@@ -1,37 +1,17 @@
-name: Run Postman Collection
+name: Automated API tests using Postman CLI
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: push
 
 jobs:
-  run-postman-tests:
+  automated-api-tests:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install Newman
-        run: npm install -g newman newman-reporter-htmlextra
-
-      - name: Run Postman Collection
-        env:
-          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
+      - uses: actions/checkout@v4
+      - name: Install Postman CLI
         run: |
-          newman run Go_rest.postman_collection.json \
-            -r cli,htmlextra \
-            --reporter-htmlextra-export reports/newman-report.html
-
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: newman-report
-          path: reports/newman-report.html
+          curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      - name: Login to Postman CLI
+        run: postman login --with-api-key ${{ secrets.POSTMAN_API_KEY }}
+      - name: Run API tests
+        run: |
+          postman collection run "45940214-92e3e2c1-cd9f-418d-a01d-bac1ef30ef48"
