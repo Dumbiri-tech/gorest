@@ -1,0 +1,30 @@
+ [
+        {
+    "id": 8261971,
+    "name": "smauel",
+    "email": "Sammy46@yahoo.com",
+    "gender": "male",
+    "status": "active"
+},
+{
+    "id": 8261971,
+    "name": "jane smith",
+    "email": "js@yahoo.com",
+    "gender": "female",
+    "status": "active"
+},
+{
+    "id": 8261971,
+    "name": "Tenali micheal",
+    "email": "mike@yahoo.com",
+    "gender": "male",
+    "status": "active"
+},
+{
+    "id": 8261971,
+    "name": "peace glory",
+    "email": "peace45@yahoo.com",
+    "gender": "female",
+    "status": "active"
+}
+      ]
